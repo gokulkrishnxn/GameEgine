@@ -2,6 +2,8 @@ package com.boategine;
 
 import java.awt.image.DataBufferInt;
 
+import com.boategine.gfx.Image;
+
 public class Renderer 
 {
 
@@ -20,6 +22,28 @@ public class Renderer
 		for(int i = 0; i < p.length; i++)
 		{
 			p[i] = 0;
+		}
+	}
+	
+	public void setPixel(int x, int y, int value)
+	{
+		if((y < 0 || x >= pW || y < 0 || y >= pH) || value == 0xffff00ff)
+		{
+			return;
+		}
+		
+		p[x + y * pW] = value;
+	}
+	
+	
+	public void drawImage(Image image, int offX, int offY)
+	{
+		for(int y = 0; y < image.getH(); y++)
+		{
+			for(int x = 0; x < image.getW(); x++)
+			{
+				setPixel(x + offX, y + offY, image.getP()[x + y * image.getH()]);
+			}
 		}
 	}
 }

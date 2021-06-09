@@ -5,13 +5,16 @@ import java.awt.event.KeyEvent;
 import com.boategine.AbstractGame;
 import com.boategine.GameContainer;
 import com.boategine.Renderer;
+import com.boategine.gfx.Image;
 
 public class GameManager extends AbstractGame
 {
 
+	private Image image;
+	
 	public GameManager()
 	{
-		
+		image = new Image("");
 	}
 	
 	
@@ -27,7 +30,7 @@ public class GameManager extends AbstractGame
 	@Override
 	public void render(GameContainer gc, Renderer r) {
 		// TODO Auto-generated method stub
-		
+		r.drawImage(image, gc.getInput().getMouseX(), gc.getInput().getMouseY());
 	}
 
 	public static void main(String agrs[])
