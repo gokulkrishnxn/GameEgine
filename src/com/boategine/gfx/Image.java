@@ -1,6 +1,7 @@
 package com.boategine.gfx;
 
 import java.awt.image.BufferedImage;
+
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -11,15 +12,17 @@ public class Image
 	private int w,h;
 	private int[] p;
 	
-	public Image(String path)
+	public Image(String path) 
 	{
 		
 		BufferedImage image = null;
 		
-		try {
-			image = ImageIO.read(Image.class.getResourceAsStream(path));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		try
+		{
+			image = ImageIO.read(getClass().getResource("imagepath"));
+		}
+		catch (IOException e)
+		{
 			e.printStackTrace();
 		}
 		
